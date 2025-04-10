@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { posix } from 'node:path/win32';
 
 @Controller('users')
 export class UsersController {
@@ -13,5 +14,9 @@ export class UsersController {
         return {id}
     }
 
+    @Post()
+    create(@Body() user : {}){
+         return user
+    }
     
 }
