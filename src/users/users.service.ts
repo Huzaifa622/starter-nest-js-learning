@@ -92,7 +92,7 @@ export class UsersService {
 
       create(user:{email:string; username:string; password:string; role: "admin" | "vendor" | "user"}){
         
-        const getUserByHighestId = [...this.users].sort((a,b)=> a.id - b.id);
+        const getUserByHighestId = [...this.users].sort((a,b)=> b.id - a.id);
 
         const newUser = {
             id:getUserByHighestId[0].id + 1,
@@ -100,7 +100,7 @@ export class UsersService {
         }
 
         this.users.push(newUser);
-
+          return newUser
       }
       
 }
