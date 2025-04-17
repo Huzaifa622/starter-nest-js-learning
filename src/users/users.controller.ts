@@ -27,17 +27,17 @@ export class UsersController {
   }
 
   @Post()
-  create(@Body() user: {}) {
-    return user;
+  create(@Body() user: { email: string; username: string; password: string; role: "admin" | "vendor" | "user"; }) {
+    return this.userService.create(user);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() user: {}) {
-    return { id, ...user };
+    return this.userService.update(+id , user);
   }
 
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return { id };
+    return this.userService.delete(+id);
   }
 }
