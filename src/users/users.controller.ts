@@ -32,7 +32,12 @@ export class UsersController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() user: {}) {
+  update(@Param('id') id: string, @Body() user: {
+    email?: string;
+    username?: string;
+    password?: string;
+    role?: 'admin' | 'vendor' | 'user';
+  }) {
     return this.userService.update(+id , user);
   }
 

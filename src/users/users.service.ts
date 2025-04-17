@@ -114,13 +114,13 @@ export class UsersService {
       role?: 'admin' | 'vendor' | 'user';
     },
   ) {
-    this.users.map((u) => {
+    this.users = this.users.map(u => {
       if (u.id == id) {
-        return { ...u, user };
+          return { ...u, ...user }
       }
-    });
-
-    return this.users;
+      return u
+  })
+  return this.findOne(id)
   }
 
   delete(id: number) {
